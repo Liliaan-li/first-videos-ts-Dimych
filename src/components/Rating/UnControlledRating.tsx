@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 
-type RatingPropsType = {
-    value: number
-}
 
-export function Rating(props: RatingPropsType) {
+
+export function Rating() {
     let [rated, setRate] = useState<number>(0);
     console.log("Rating rendering")
     let onClickHandler = (id:number)=>{
@@ -30,9 +28,6 @@ function Star(props: StarPropsType) {
     let onMainClickHandler=()=>{
         props.onClick(props.id)
     }
-    if (props.selected < props.id) {
-        return (<span onClick={onMainClickHandler}>star </span>)
-    } else {
-        return <span><b>star </b></span>
-    }
+
+    return ((props.selected < props.id) ? <span onClick={onMainClickHandler}>star </span> : <span><b>star </b></span>)
 }
